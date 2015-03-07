@@ -1,4 +1,4 @@
-﻿from microsoft/aspnet
+﻿FROM microsoft/aspnet
 
 #install npm in docker image
 RUN apt-get update && apt-get install -y curl
