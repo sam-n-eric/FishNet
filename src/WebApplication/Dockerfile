@@ -1,12 +1,19 @@
 ﻿FROM microsoft/aspnet
 
-COPY project.json /app/
+RUN apt-get update && apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup | bash -
+RUN apt-get install -y nodejs
 
+RUN npm install -g bower
+RUN npm install -g grunt-bower-cli
+RUN npm install -g grunt
+RUN npm install -g grunt-cli
+RUN npm install -g grunt-bower-task
+
+COPY . /app
 WORKDIR /app
 
 RUN ["kpm", "restore"]
-
-COPY . /app
 
 EXPOSE 5004
 
